@@ -21,7 +21,7 @@ export default class Car {
     this.location.add(this.velocity);
     console.log('Accel-X-Location: ', this.location.x);
     
-    if (this.location.x > windowWidth) {
+    if (this.location.x > this.p5.width) {
       // Make it appear as if the car is driving into the frame
       this.location.x = -40;
     }
@@ -39,13 +39,13 @@ export default class Car {
     this.location.add(this.velocity);
     console.log('Brake-X-Location: ', this.location.x);
     
-    if (this.location.x > windowWidth) {
+    if (this.location.x > this.p5.width) {
       // Make it appear as if the car is driving into the frame
       this.location.x = -40;
     }
     
     if (this.location.x < 0) {
-      this.location.x = windowWidth;
+      this.location.x = this.p5.width;
     }
   }
   

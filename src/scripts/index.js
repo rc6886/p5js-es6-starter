@@ -18,6 +18,12 @@ new P5((p5) => {
   p5.draw = () => {
     p5.background(220);
 
+    p5.keyPressed = function() {
+      if (p5.keyCode === 38) {
+        car.accelerate();
+      }
+    };
+
     car.display();
   };
 });
