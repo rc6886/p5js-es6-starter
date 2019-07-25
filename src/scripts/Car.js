@@ -11,22 +11,20 @@ export default class Car {
   }
   
   accelerate() {
-    this.velocity.add(this.p5.createVector(0.1, 0));
+    this.velocity.add(this.p5.createVector(0.5, 0));
   }
   
   brake() {
-    this.velocity.sub(this.p5.createVector(0.1, 0));
+    this.velocity.sub(this.p5.createVector(0.5, 0));
   }
   
   display() {
     this.location.add(this.velocity);
 
-    console.log('Acceleration: ', this.acceleration);
-    console.log('Velocity: ', this.velocity);
-    console.log('Location: ', this.location);
-
-    if (this.location.x >= this.p5.width) {
+    if (this.location.x >= this.p5.width && this.velocity.x > 0) {
       this.location.x = -30;
+    } else if (this.location.x < -50 && this.velocity.x < 0) {
+      this.location.x = this.p5.width + 30;
     }
 
     this.p5.image(this.image, this.location.x, this.location.y);
