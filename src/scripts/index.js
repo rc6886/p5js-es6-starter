@@ -22,6 +22,10 @@ new P5((p5) => {
       if (p5.keyCode === 38) {
         car.accelerate();
       }
+
+      if (p5.keyCode === 40) {
+        car.brake();
+      }
     };
 
     car.display();

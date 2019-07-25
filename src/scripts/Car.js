@@ -11,45 +11,24 @@ export default class Car {
   }
   
   accelerate() {
-    this.acceleration.x += 0.001;
-    console.log('Accel-X-Acceleration: ', this.acceleration.x);
-    
-    this.velocity.add(this.acceleration);
-    console.log('Accel-X-Velocity: ', this.velocity.x);
-    this.velocity.limit(2);
-    
-    this.location.add(this.velocity);
-    console.log('Accel-X-Location: ', this.location.x);
-    
-    if (this.location.x > this.p5.width) {
-      // Make it appear as if the car is driving into the frame
-      this.location.x = -40;
-    }
+    this.velocity.add(this.p5.createVector(0.1, 0));
   }
   
   brake() {
-    this.velocity.add(-0.001, 0);
-    console.log('Brake-X-Velocity: ', this.velocity.x);
-    
-    if (this.velocity.x < 0) {
-      this.velocity.x = 0;
-    }
-    
-    
-    this.location.add(this.velocity);
-    console.log('Brake-X-Location: ', this.location.x);
-    
-    if (this.location.x > this.p5.width) {
-      // Make it appear as if the car is driving into the frame
-      this.location.x = -40;
-    }
-    
-    if (this.location.x < 0) {
-      this.location.x = this.p5.width;
-    }
+    this.velocity.sub(this.p5.createVector(0.1, 0));
   }
   
   display() {
+    this.location.add(this.velocity);
+
+    console.log('Acceleration: ', this.acceleration);
+    console.log('Velocity: ', this.velocity);
+    console.log('Location: ', this.location);
+
+    if (this.location.x >= this.p5.width) {
+      this.location.x = -30;
+    }
+
     this.p5.image(this.image, this.location.x, this.location.y);
   }
 }
